@@ -6,11 +6,12 @@
 #    By: potero-d <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 09:33:25 by potero-d          #+#    #+#              #
-#    Updated: 2021/10/27 10:22:03 by potero-d         ###   ########.fr        #
+#    Updated: 2021/10/27 15:29:12 by potero-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = 
+SRCS = ft_printf.c ft_putchar_fd.c ft_putstr_fd.c \
+	  ft_putnbr_base.c 
 
 OBJS = $(SRCS:.c=.o)
 
@@ -23,15 +24,15 @@ CFLAGS	= -Wall -Wextra -Werror -I.
 RM = rm -f
 
 $(NAME): $(OBJS)
-		ar rcs $(NAME) $(OBJS)
-all = $(NAME)
+			ar rcs $(NAME) $(OBJS)
+all: $(NAME)
 
-clean =
+clean:
 		$(RM) $(OBJS)
 
-fclean = clean
+fclean: clean
 		$(RM) $(NAME)
 
-re = fclean $(NAME)
+re: fclean $(NAME)
 
 .PHONY:	all clean fclean re
