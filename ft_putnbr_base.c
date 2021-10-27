@@ -6,7 +6,7 @@
 /*   By: potero-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 16:23:14 by potero-d          #+#    #+#             */
-/*   Updated: 2021/10/25 12:11:21 by potero-d         ###   ########.fr       */
+/*   Updated: 2021/10/27 15:58:05 by potero-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_check_base(char *str)
 	return (1);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(int nbr, char *base)
 {
 	unsigned int	m;
 	unsigned int	n;
@@ -70,11 +70,14 @@ void	ft_putnbr_base(int nbr, char *base)
 		{
 			write(1, "-", 1);
 			nbr = nbr * -1;
+			i++;
 		}
 		n = nbr;
 		if (n >= m)
 			ft_putnbr_base((n / m), base);
 		c = base[n % m];
 		write(1, &c, 1);
+		i++;
 	}
+	return (i);
 }
