@@ -21,7 +21,7 @@ void	ft_character(char c, va_list ap, int *cont)
 	else if	(c == 'p')
 	{
 		write(1, "0x", 2);
-		*cont += ft_putnbr_base_n(va_arg(ap, long long int), "0123456789abcdef") + 2;
+		*cont += ft_putnbr_base_n(va_arg(ap, unsigned long long), "0123456789abcdef") + 2;
 	}
 	else if (c == 'd')
 		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789");

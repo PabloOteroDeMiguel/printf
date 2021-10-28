@@ -39,6 +39,7 @@ int	main(void)
 /*	printf("+: %d\n", printf(" %p ", -1));
 	printf("-: %d\n", ft_printf(" %p ", -1));*/
 
-	printf("+: %d\n", printf(" %llu ", -9223372036854775808));
-	printf("-: %d\n", ft_printf(" %p ", -9223372036854775808));
+	printf("+: 147AE147AE147B0\n");
+	printf("-: %d\n", ft_printf(" %p ", 9223372036854775807));
+	printf("-: %d\n", ft_printf(" %p ", -1));
 }
