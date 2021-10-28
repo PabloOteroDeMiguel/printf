@@ -18,18 +18,21 @@ void	ft_character(char c, va_list ap, int *cont)
 		*cont += ft_putchar_fd(va_arg(ap, int), 1);
 	else if (c == 's')
 		*cont += ft_putstr_fd(va_arg(ap, char*), 1);
-/*	else if	(c == 'p')
-		ft_putnbr_base(va_arg(ap, void*), "0123456789abcdef");*/
+	else if	(c == 'p')
+	{
+		write(1, "0x", 2);
+		*cont += ft_putnbr_base_n(va_arg(ap, long long int), "0123456789abcdef") + 2;
+	}
 	else if (c == 'd')
 		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789");
 	else if (c == 'i')
 		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789");
-/*	else if (c == 'u')
-		*cont += ft_putnbr_base(va_arg(ap,long int), "0123456789");*/
+	else if (c == 'u')
+		*cont += ft_putnbr_base_n(va_arg(ap, int), "0123456789");
 	else if (c == 'x')
-		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789abcdef");
+		*cont += ft_putnbr_base_n(va_arg(ap, int), "0123456789abcdef");
 	else if (c == 'X')
-		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789ABCDEF");
+		*cont += ft_putnbr_base_n(va_arg(ap, int), "0123456789ABCDEF");
 	else
 		*cont += ft_putchar_fd(c, 1);
 }

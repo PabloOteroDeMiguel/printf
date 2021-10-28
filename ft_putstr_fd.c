@@ -6,7 +6,7 @@
 /*   By: potero-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 13:30:29 by potero-d          #+#    #+#             */
-/*   Updated: 2021/10/27 15:58:33 by potero-d         ###   ########.fr       */
+/*   Updated: 2021/10/27 16:04:10 by potero-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	ft_putstr_fd(char *s, int fd)
 
 	i = 0;
 	if (s == 0)
-		return (0);
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	while (s[i] != '\0')
 	{
 		ft_putchar_fd(s[i], fd);

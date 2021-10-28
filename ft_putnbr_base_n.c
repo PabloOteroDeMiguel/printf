@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: potero-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/27 09:42:04 by potero-d          #+#    #+#             */
-/*   Updated: 2021/10/27 09:55:22 by potero-d         ###   ########.fr       */
+/*   Created: 2021/08/19 16:23:14 by potero-d          #+#    #+#             */
+/*   Updated: 2021/10/27 15:58:05 by potero-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-#include <stdarg.h>
-#include <unistd.h>
+#include "ft_printf.h"
 
-int     ft_printf(const char *str, ...);
-int     ft_putchar_fd(char c, int fd);
-int     ft_putstr_fd(char *s, int fd);
-int     ft_putnbr_base(int nbr, char *base);
-int     ft_putnbr_base_n(int nbr, char *base);
-size_t  ft_strlen(const char *str);
+int	ft_putnbr_base_n(int nbr, char *base)
+{
+	unsigned int	m;
+	unsigned int	n;
+	char			c;
+	int				i;
 
-# endif
+	m = ft_strlen(base);
+	i = 0;
+	n = nbr;
+	if (n >= m)
+		i += ft_putnbr_base((n / m), base);
+	c = base[n % m];
+	i++;
+	write(1, &c, 1);
+	return (i);
+}
