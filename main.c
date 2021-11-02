@@ -12,6 +12,7 @@
 
 #include<stdio.h>
 #include"ft_printf.h"
+#include<limits.h>
 
 int	main(void)
 {
@@ -39,7 +40,10 @@ int	main(void)
 /*	printf("+: %d\n", printf(" %p ", -1));
 	printf("-: %d\n", ft_printf(" %p ", -1));*/
 
-	printf("+: 147AE147AE147B0\n");
+/*	printf("+: 147AE147AE147B0\n");
 	printf("-: %d\n", ft_printf(" %p ", 9223372036854775807));
 	printf("-: %d\n", ft_printf(" %p ", -1));
+	printf("-: %d\n", ft_printf(" %p ", 4294967295));*/
+	ft_printf("%d\n", ft_printf(" %p %p ", LONG_MIN, LONG_MAX));
+	ft_printf("%d\n", ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX));
 }

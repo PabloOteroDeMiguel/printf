@@ -6,7 +6,7 @@
 /*   By: potero-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 09:39:56 by potero-d          #+#    #+#             */
-/*   Updated: 2021/10/27 16:02:27 by potero-d         ###   ########.fr       */
+/*   Updated: 2021/11/02 11:12:10 by potero-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,21 @@ void	ft_character(char c, va_list ap, int *cont)
 	if (c == 'c')
 		*cont += ft_putchar_fd(va_arg(ap, int), 1);
 	else if (c == 's')
-		*cont += ft_putstr_fd(va_arg(ap, char*), 1);
-	else if	(c == 'p')
+		*cont += ft_putstr_fd(va_arg(ap, char *), 1);
+	else if (c == 'p')
 	{
 		write(1, "0x", 2);
-		*cont += ft_putnbr_base_n(va_arg(ap, unsigned long long), "0123456789abcdef") + 2;
+		*cont += ft_putnbr_base_n((unsigned long long)va_arg(ap, void *),
+				 "0123456789abcdef") + 2;
 	}
-	else if (c == 'd')
-		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789");
-	else if (c == 'i')
-		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789");
+	else if (c == 'd' || c == 'i')
+		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789", 1);
 	else if (c == 'u')
-		*cont += ft_putnbr_base_n(va_arg(ap, int), "0123456789");
+		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789", 0);
 	else if (c == 'x')
-		*cont += ft_putnbr_base_n(va_arg(ap, int), "0123456789abcdef");
+		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789abcdef", 0);
 	else if (c == 'X')
-		*cont += ft_putnbr_base_n(va_arg(ap, int), "0123456789ABCDEF");
+		*cont += ft_putnbr_base(va_arg(ap, int), "0123456789ABCDEF", 0);
 	else
 		*cont += ft_putchar_fd(c, 1);
 }

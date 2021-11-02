@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(int nbr, char *base, int p)
 {
 	unsigned int	m;
 	unsigned int	n;
@@ -21,15 +21,18 @@ int	ft_putnbr_base(int nbr, char *base)
 
 	m = ft_strlen(base);
 	i = 0;
-	if (nbr < 0)
+	if (p == 1)
 	{
-		write(1, "-", 1);
-		nbr = nbr * -1;
-		i++;
+		if (nbr < 0)
+		{
+			write(1, "-", 1);
+			nbr = nbr * -1;
+			i++;
+		}
 	}
 	n = nbr;
 	if (n >= m)
-		i += ft_putnbr_base((n / m), base);
+		i += ft_putnbr_base((n / m), base, p);
 	c = base[n % m];
 	i++;
 	write(1, &c, 1);
